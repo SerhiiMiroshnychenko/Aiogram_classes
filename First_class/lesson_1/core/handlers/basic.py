@@ -7,10 +7,12 @@ async def get_start(message: Message, bot: Bot):
 
     # Повідомлення користувачу по id
     await bot.send_message(message.from_user.id, f'<b>Привіт {message.from_user.id}. Приємно тебе бачити!</b>')
+
     # Повідомлення користувачу без id => в той же чат, звідки отримали повідомлення
-    await message.answer(f'<s>Привіт {message.from_user.id}. Приємно тебе бачити!</s>')
+    # await message.answer(f'<s>Привіт {message.from_user.id}. Приємно тебе бачити!</s>')
+
     # За допомогою reply можна цитувати повідомлення користувача
-    await message.reply(f'<tg-spoiler>Привіт {message.from_user.id}. Приємно тебе бачити!</tg-spoiler>')
+    # await message.reply(f'<tg-spoiler>Привіт {message.from_user.id}. Приємно тебе бачити!</tg-spoiler>')
 
 
 async def get_photo(message: Message, bot: Bot):
@@ -42,6 +44,14 @@ async def get_hello(message: Message, bot: Bot):
     # json_str = json.dumps(message.dict(), default=str)
     json_message = message.dict()
     await write_file(json_message)
+
+
+async def get_glory(message: Message, bot: Bot):
+    """
+    Реакція на повідомлення з текстом "Слава Україні"
+    """
+    await message.answer(f'Героям Слава!')
+
 
 
 
