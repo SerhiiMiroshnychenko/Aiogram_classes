@@ -2,13 +2,19 @@ from aiogram import Bot
 from aiogram.types import Message
 import json
 from ..keyboards.reply import reply_keyboard, loc_tel_poll_keyboard, get_reply_keyboard
+from ..keyboards.inline import select_school, get_inline_keyboard
+
+
+async def get_inline(message: Message, bot: Bot):
+    await message.answer(f'Привіт, {message.from_user.first_name}. Ось inline кнопки: ',
+                         reply_markup=get_inline_keyboard())
 
 
 async def get_start(message: Message, bot: Bot):
     """Обробка натискання користувача на кнопку старт"""
 
     # Повідомлення користувачу по id
-    await bot.send_message(message.from_user.id, f'<b>Привіт {message.from_user.id}. Приємно тебе бачити!</b>',
+    await bot.send_message(message.from_user.id, f'<b>Привіт {message.from_user.first_name}. Приємно тебе бачити!</b>',
                            reply_markup=get_reply_keyboard())
                            # reply_markup=loc_tel_poll_keyboard)
     # reply_markup=reply_keyboard => відправлення сформованої клавіатури

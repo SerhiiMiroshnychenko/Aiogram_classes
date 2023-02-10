@@ -16,6 +16,10 @@ async def set_commands(bot: Bot):
             command='cancel',
             description='Скидання'
         ),
+        BotCommand(
+            command='inline',
+            description='Показати inline клавіатуру'
+        )
     ]
 
     await bot.set_my_commands(commands, BotCommandScopeDefault())
