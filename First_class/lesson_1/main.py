@@ -10,7 +10,10 @@ from aiogram.filters import Command, CommandStart
 from core.utils.commands import set_commands
 from core.handlers.basic import get_location
 from core.handlers.basic import get_inline
+from core.handlers.basic import get_macbook
 from core.handlers.callback import select_answer
+from core.handlers.callback import select_macbook
+
 
 
 
@@ -38,8 +41,9 @@ async def start():
     dp.startup.register(stop_bot)  # Реєструємо handler "stop_bot" на подію "startup" => стоп бота
 
     dp.message.register(get_inline, Command(commands='inline'))
+    dp.callback_query.register(select_macbook, F.data.startswith('apple_'))
     dp.callback_query.register(select_answer)
-    # тільки при виборі Beetroot
+    dp.message.register(get_macbook, Command(commands='macbook'))
     dp.message.register(get_photo, F.photo)  # реєструємо реакцію на фото
     dp.message.register(get_location, F.location)  # реєструємо реакцію на локацію
     dp.message.register(get_hello, F.text == 'Привіт')  # реєструємо реакцію на "Привіт"

@@ -19,6 +19,10 @@ async def set_commands(bot: Bot):
         BotCommand(
             command='inline',
             description='Показати inline клавіатуру'
+        ),
+        BotCommand(
+            command='macbook',
+            description='Показати вибір macbook-ів'
         )
     ]
 

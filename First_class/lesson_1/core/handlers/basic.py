@@ -2,7 +2,12 @@ from aiogram import Bot
 from aiogram.types import Message
 import json
 from ..keyboards.reply import reply_keyboard, loc_tel_poll_keyboard, get_reply_keyboard
-from ..keyboards.inline import select_school, get_inline_keyboard
+from ..keyboards.inline import get_inline_keyboard, get_macbook_keyboard
+
+
+async def get_macbook(message: Message, bot: Bot):
+    await message.answer(f'Привіт, {message.from_user.first_name}. Вибір macbook-ів: ',
+                         reply_markup=get_macbook_keyboard())
 
 
 async def get_inline(message: Message, bot: Bot):

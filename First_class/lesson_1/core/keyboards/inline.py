@@ -2,7 +2,28 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
-select_school = InlineKeyboardMarkup(inline_keyboard=[
+select_macbook = InlineKeyboardMarkup(inline_keyboard=[
+    [
+        InlineKeyboardButton(
+            text='Macbook Air 13" M1 2020',
+            callback_data='apple_air_13_m1_2020'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text='Macbook Pro 14" M1 Pro 2021',
+            callback_data='apple_pro_14_m1_2021'
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text='Apple MacBook Pro 16" 2019',
+            callback_data='apple_pro_16_i7_2019'
+        )
+    ]
+])
+
+select_answers = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
             text='Україна',
@@ -45,4 +66,14 @@ def get_inline_keyboard():
     keyboard_builder.button(text='Супротив', url='https://t.me/mrplsprotyv')
 
     keyboard_builder.adjust(1, 1, 1, 2)
+    return keyboard_builder.as_markup()
+
+
+def get_macbook_keyboard():
+    keyboard_builder = InlineKeyboardBuilder()
+    keyboard_builder.button(text='Macbook Air 13" M1 2020', callback_data='apple_air_13_m1_2020')
+    keyboard_builder.button(text='Macbook Pro 14" M1 Pro 2021', callback_data='apple_pro_14_m1_2021')
+    keyboard_builder.button(text='Apple MacBook Pro 16" 2019', callback_data='apple_pro_16_i7_2019')
+
+    keyboard_builder.adjust(1, 1, 1)
     return keyboard_builder.as_markup()
